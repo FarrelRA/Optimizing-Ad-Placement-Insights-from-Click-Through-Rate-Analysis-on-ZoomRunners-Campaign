@@ -64,16 +64,16 @@ ui <- dashboardPage(skin = "blue",
                           fluidRow(
                             column(
                               width = 6,
-                              textInput("left_input", "Masukkan data left", ""),
-                              textInput("center_input", "Masukkan data center", ""),
-                              textInput("right_input", "Masukkan data right", ""),
-                              actionButton("submit_btn", "Tambah Data")
+                              textInput("left_input", "Input data left", ""),
+                              textInput("center_input", "Input data center", ""),
+                              textInput("right_input", "Input data right", ""),
+                              actionButton("submit_btn", "Add Data")
                             ),
                             column(
                               width = 6,
                               DTOutput("data_table"),
-                              actionButton("edit_data_btn", "Edit Data Terpilih"),
-                              actionButton("hapus_data_btn", "Hapus Data Terpilih")
+                              actionButton("edit_data_btn", "Edit Choosed Data"),
+                              actionButton("hapus_data_btn", "Delete Choosed Data")
                             ),
                             column(
                               width = 12,
@@ -196,9 +196,9 @@ server <- function(input, output, session) {
     result_anova <- aov(left ~ day, data = rv$data)
     p_value <- format(summary(result_anova)[[1]]$'Pr(>F)'[1], digits = 3)
     if (as.numeric(p_value) > 0.05) {
-      paste("Karena p-value(", p_value, ") > 0.05,tidak terdapat perbedaan signifikan antara kelompok left sidebar dan kelompok lainnya.")
+      paste("Because p-value(", p_value, ") > 0.05,There is no significant difference between the left sidebar group and the other groups.")
     } else {
-      paste("Karena p-value(", p_value, ") < 0.05,terdapat perbedaan signifikan antara kelompok left sidebar dan kelompok lainnya.")
+      paste("Because p-value(", p_value, ") < 0.05,There is a significant difference between the left sidebar group and the other groups.")
     }
   })
   
@@ -207,9 +207,9 @@ server <- function(input, output, session) {
     result_anova <- aov(center ~ day, data = rv$data)
     p_value <- format(summary(result_anova)[[1]]$'Pr(>F)'[1], digits = 3)
     if (as.numeric(p_value) > 0.05) {
-      paste("Karena p-value(", p_value, ") > 0.05,tidak terdapat perbedaan signifikan antara kelompok center page dan kelompok lainnya.")
+      paste("Because p-value(", p_value, ") > 0.05,There is no significant difference between the center page group and the other groups.")
     } else {
-      paste("Karena p-value(", p_value, ") < 0.05,terdapat perbedaan signifikan antara kelompok center page dan kelompok lainnya.")
+      paste("Because p-value(", p_value, ") < 0.05,There is a significant difference between the center page group and the other groups.")
     }
   })
   
@@ -218,9 +218,9 @@ server <- function(input, output, session) {
     result_anova <- aov(right ~ day, data = rv$data)
     p_value <- format(summary(result_anova)[[1]]$'Pr(>F)'[1], digits = 3)
     if (as.numeric(p_value) > 0.05) {
-      paste("Karena p-value (", p_value, ") > 0.05,tidak terdapat perbedaan signifikan antara kelompok right sidebar dan kelompok lainnya.")
+      paste("Because p-value (", p_value, ") > 0.05,0.05,There is no significant difference between the right sidebar group and the other groups.")
     } else {
-      paste("Karena p-value(", p_value, ") < 0.05, terdapat perbedaan signifikan antara kelompok right sidebar dan kelompok lainnya.")
+      paste("Because p-value(", p_value, ") < 0.05, 0.05,There is a significant difference between the left sidebar group and the other groups.")
     }
   })
   
@@ -229,9 +229,9 @@ server <- function(input, output, session) {
     result_anova <- aov(CTR ~ Ad_Placement, data = rv$data2)
     p_value <- format(summary(result_anova)[[1]]$'Pr(>F)'[1], digits = 3)
     if (as.numeric(p_value) > 0.05) {
-      paste("Karena p-value (", p_value, ") > 0.05, tidak terdapat perbedaan signifikan untuk semua kelompok")
+      paste("Because p-value (", p_value, ") > 0.05, There is no significant difference for all groups.")
     } else {
-      paste("Karena p-value(", p_value, ") < 0.05, terdapat perbedaan signifikan untuk semua kelompok")
+      paste("Because p-value(", p_value, ") < 0.05, There is a significant difference for all groups.")
     }
   })
   # Visualisasi diagram batang
